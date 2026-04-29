@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: pack-calculator
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    envVars:
+      - key: PORT
+        value: "8080"
+      - key: DB_PATH
+        value: /data/pack-calculator.db
+      - key: SEED
+        value: "250,500,1000,2000,5000"
+    # Persistent disk requires a paid plan (starter or higher). Without it,
+    # the SQLite file is ephemeral and pack sizes reset to SEED on each
+    # deploy/restart. To keep operator-configured sizes across restarts,
+    # set plan: starter above and uncomment:
+    # disk:
+    #   name: pack-data
+    #   mountPath: /data
+    #   sizeGB: 1

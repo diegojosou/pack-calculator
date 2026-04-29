@@ -1,0 +1,17 @@
+# Don't bake build outputs or local state into the image.
+.git
+.gitignore
+*.md
+README.md
+docs/
+scripts/
+.vscode
+.idea
+*.db
+*.db-journal
+data/
+**/testdata
+*.log
+Dockerfile
+.dockerignore
+docker-compose*.yml

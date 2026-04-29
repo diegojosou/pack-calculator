@@ -1,0 +1,16 @@
+services:
+  pack-calculator:
+    build: .
+    image: pack-calculator:latest
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: "8080"
+      DB_PATH: "/data/pack-calculator.db"
+      SEED: "250,500,1000,2000,5000"
+    volumes:
+      - pack-data:/data
+    restart: unless-stopped
+
+volumes:
+  pack-data:
