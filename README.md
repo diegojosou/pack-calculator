@@ -197,17 +197,8 @@ Highlights:
 
 ## Deployment
 
-The repo is set up to deploy to any Docker-aware platform. Two suggested paths:
-
-### Fly.io (free tier)
-
-```bash
-fly launch              # use the existing Dockerfile, accept defaults
-fly volumes create pack_data --region <region> --size 1
-fly deploy
-```
-
-In `fly.toml`, mount the volume at `/data` and set `PORT = "8080"`.
+The repo is set up to deploy to any Docker-aware platform. The walkthrough
+below is for Render, which is what the live demo uses.
 
 ### Render
 
