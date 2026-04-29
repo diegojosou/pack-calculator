@@ -182,6 +182,11 @@ make test            # all unit + integration tests with -race
 make cover           # writes coverage.html
 ```
 
+Coverage on the latest run: **84.2% overall**, with `internal/calculator` at
+98.2%, `internal/store` at 82.1%, and `internal/server` at 76.7%. CI runs
+the same `go test -race` plus `go vet` on every push and PR (see
+`.github/workflows/ci.yml`).
+
 Highlights:
 
 - `internal/calculator/calculator_test.go` — covers every worked example from
