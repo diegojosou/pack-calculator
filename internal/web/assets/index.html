@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Order Packs Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Order Packs Calculator</h1>
+
+      <section aria-labelledby="config-heading">
+        <h2 id="config-heading">Pack Sizes</h2>
+        <p class="hint">
+          Configure the pack sizes available for shipping. The largest pack size
+          can be added or removed at any time — the calculation adapts.
+        </p>
+
+        <table id="pack-sizes-table" aria-label="Pack sizes">
+          <thead>
+            <tr><th scope="col">Pack Sizes</th><th scope="col" aria-label="Actions"></th></tr>
+          </thead>
+          <tbody id="pack-sizes-rows"></tbody>
+        </table>
+
+        <div class="row">
+          <button id="add-row" type="button" class="btn-secondary">+ Add row</button>
+          <button id="save-sizes" type="button" class="btn-primary">Submit pack sizes change</button>
+        </div>
+        <p id="sizes-status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section aria-labelledby="calc-heading">
+        <h2 id="calc-heading">Calculate packs for order</h2>
+        <form id="calc-form" class="row">
+          <label for="order">Items:</label>
+          <input
+            id="order"
+            name="order"
+            type="number"
+            min="1"
+            step="1"
+            inputmode="numeric"
+            placeholder="e.g. 12001"
+            required
+          />
+          <button type="submit" class="btn-primary">Calculate</button>
+        </form>
+        <p id="calc-status" class="status" role="status" aria-live="polite"></p>
+
+        <div id="result" hidden>
+          <p class="summary">
+            <strong id="result-summary"></strong>
+          </p>
+          <table aria-label="Calculation result">
+            <thead>
+              <tr><th scope="col">Pack</th><th scope="col">Quantity</th></tr>
+            </thead>
+            <tbody id="result-rows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

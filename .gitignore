@@ -1,0 +1,20 @@
+# Build outputs
+/bin/
+*.test
+*.out
+
+# Local dev databases
+/data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Coverage
+coverage.out
+coverage.html
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store
