@@ -10,7 +10,11 @@ pack sizes, returns the optimal pack breakdown:
 It exposes a JSON HTTP API and ships with a small static UI served from the
 same binary.
 
-> Live demo: <fill in once deployed>
+> Live demo: <https://pack-calculator-yugh.onrender.com>
+>
+> Hosted on Render's free tier, which sleeps the service after about 15
+> minutes of inactivity. The first request after a cold start can take
+> around 30 seconds to wake the container; subsequent requests are immediate.
 
 ## Quick start
 
@@ -207,8 +211,20 @@ In `fly.toml`, mount the volume at `/data` and set `PORT = "8080"`.
 
 ### Render
 
-Choose "Web Service" → "Docker" and point Render at this repo. Set the
-disk mount path to `/data` and add `PORT=8080`. The free tier is sufficient.
+A `render.yaml` blueprint is committed at the repo root. To deploy:
+
+1. From the Render dashboard, choose **New +** → **Blueprint** and pick
+   this repo.
+2. Render reads `render.yaml`, provisions a Docker web service on the free
+   plan with `PORT`, `DB_PATH`, and `SEED` already wired, and uses
+   `/healthz` as the health check.
+3. Click **Apply**. First build takes 3 to 5 minutes.
+
+The free plan does not support persistent disks, so the SQLite file is
+ephemeral and operator-configured pack sizes reset to `SEED` on each
+deploy or cold start. To keep state across restarts, switch `plan: free`
+to `plan: starter` in `render.yaml` and uncomment the `disk:` block
+(mounts at `/data`).
 
 ## Project conventions
 
